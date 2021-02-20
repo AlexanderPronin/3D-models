@@ -1,11 +1,35 @@
-// Шестерня
-
 use <libs/gear.scad>;
 
+state = 2 ; // [0:2]
+
+/* [Hidden] */
+
+pos = [
+    [
+        [[0,0,3.1], [0,0,0]],
+        [[18.9,-1.5,1.5], [0,0,6]],
+        [[13,14.5,2.5], [0,0,8]],
+        [[1.6,13,0.3], [0,0,20]]
+    ],
+    [
+        [[0,0,0], [0,0,0]],
+        [[0,12.75,-1.9], [0,0,18]],
+        [[0,24.67,1],[180,0,20.65]],
+        [[0,35.51,-2.2],[0,0,19.85]]
+    ],
+    [
+        [[0,0,3.1], [0,0,0]],
+        [[13,-2,1.5], [0,0,8]],
+        [[17,9.5,5.8], [0,180,6]],
+        [[5.4,11.7,0.3], [0,0,-2]]
+    ],
+];
+
 color("Orange")
-translate([0,0,0])
+translate(pos[state][0][0])
+rotate(pos[state][0][1])
 union() {
-    linear_extrude(5)
+    linear_extrude(5, convexity=10, slices=0)
     gear_polygon(Da=9.4, Z=10, $fn=25);
 
     linear_extrude(2)
@@ -19,13 +43,13 @@ union() {
 }
 
 color("Red")
-translate([0,12.75,-1.9])
-rotate([0,0,18])
+translate(pos[state][1][0])
+rotate(pos[state][1][1])
 union() {
-    linear_extrude(4.7)
+    linear_extrude(4.7, convexity=10, slices=0)
     gear_polygon(Da=5.8, Z=10, $fn=25);
     
-    linear_extrude(1.3)
+    linear_extrude(1.3, convexity=10, slices=0)
     gear_polygon(Da=17.8, Z=34, $fn=25);
     
     translate([0,0,-0.3])
@@ -36,13 +60,13 @@ union() {
 }
 
 color("Green")
-translate([0,24.67,1])
-rotate([180,0,20.65])
+translate(pos[state][2][0])
+rotate(pos[state][2][1])
 union() {
-    linear_extrude(3.2)
+    linear_extrude(3.2, convexity=10, slices=0)
     gear_polygon(Da=8, Z=14, $fn=25);
     
-    linear_extrude(1.3)
+    linear_extrude(1.3, convexity=10, slices=0)
     gear_polygon(Da=17.8, Z=34, $fn=25);
     
     translate([0,0,-0.3])
@@ -54,11 +78,11 @@ union() {
 
 
 color("Blue")
-translate([0,35.51,-2.2])
-rotate([0,0,19.85])
+translate(pos[state][3][0])
+rotate(pos[state][3][1])
 difference() {
     union() {
-        linear_extrude(5)
+        linear_extrude(5, convexity=10, slices=0)
         gear_polygon(Da=5.8, Z=10, $fn=25);
 
         translate([0,0,-0.3])
