@@ -48,4 +48,14 @@ difference() {
     }
 
     cylinder(h=8, d=5, $fn=50, center=true);
+
+    hull() {
+        rotate([0,0,-12])
+        translate([-35.8,0,0])
+        cylinder(h=10, d=6, $fn=50, center=true);
+
+        rotate([0,0,-16])
+        translate([-36,0,0])
+        cylinder(h=10, d=6.4, $fn=50, center=true);
+    }
 }
